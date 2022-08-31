@@ -1,0 +1,24 @@
+{
+  "books": [
+    {
+      "title": "C",
+      "author": "RES",
+      "id": 1
+    },
+    {
+      "title": "C++",
+      "author": "LEZZ",
+      "id": 2
+    },
+    {
+      "title": "CN2",
+      "author": "GAP",
+      "id": 3
+    },
+    {
+      "title": "LAN",
+      "author": "RES",
+      "id": 4
+    }
+  ]
+}
