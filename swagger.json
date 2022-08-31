@@ -1,0 +1,210 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Book Shop",
+        "description": "Book Shop API Documents"
+    },
+    "host": "localhost:4000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Books",
+            "description": "API for Book Shop"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/addBook": {
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "description": "Create new Book in Shop",
+                "parameters": [
+                    {
+                        "name": "Book",
+                        "in": "body",
+                        "description": "Book that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create new Book in Shop",
+                "responses": {
+                    "200": {
+                        "description": "New Book is created",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    }
+                }
+            }
+        },
+        "/getBooks": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get all Books From Shop",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Books"
+                        }
+                    }
+                }
+            }
+        },
+        "/getBook/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of Book that we want to find",
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get Book By ID From Shop",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Books"
+                        }
+                    }
+                }
+            }
+        },
+        "/updateBook/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of Book that we want to find",
+                    "type": "integer"
+                }
+            ],
+            "put": {
+                "summary": "Update Book By ID From Shop",
+                "tags": [
+                    "Books"
+                ],
+                "parameters": [
+                    {
+                        "name": "Book",
+                        "in": "body",
+                        "description": "Book with All new values of properties",
+                        "schema": {
+                            "$ref": "#/definitions/updateBook"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Book is updated",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    }
+                }
+            }
+        },
+        "/editBook/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of Book that we want to find",
+                    "type": "integer"
+                }
+            ],
+            "patch": {
+                "summary": "Update Partially Book By ID From Shop",
+                "tags": [
+                    "Books"
+                ],
+                "parameters": [
+                    {
+                        "name": "Book",
+                        "in": "body",
+                        "description": "Book with Some new values of properties",
+                        "schema": {
+                            "$ref": "#/definitions/editBook"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Book is updated",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Book": {
+            "required": [
+                "id",
+                "title",
+                "author"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                },
+                "title": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                }
+            }
+        },
+        "updateBook": {
+            "required": [
+                "title",
+                "author"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                }
+            }
+        },
+        "editBook": {
+            "properties": {}
+        },
+        "Books": {
+            "type": "array",
+            "$ref": "#/definitions/Book"
+        }
+    }
+}
